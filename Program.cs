@@ -11,38 +11,40 @@ namespace Prototype
             Console.WriteLine("Prototype is a creational design pattern that allows cloning objects, even complex ones, without coupling to their specific classes.");
             Console.WriteLine();
 
-            Person p1 = new Person();
-            p1.Age = 43;
-            p1.BirthDate = Convert.ToDateTime("1976-01-01");
-            p1.Name = "Stuart Shepherd";
-            p1.IdInfo = new IdInfo(666);
+            Person person1 = new Person
+            {
+                Age = 43,
+                BirthDate = Convert.ToDateTime("1976-01-01"),
+                Name = "Stuart Shepherd",
+                IdInfo = new IdInfo(666)
+            };
 
-            // perform a shallow copy of p1 and assign it to p2.
-            Person p2 = p1.ShallowCopy();
-            // make a deep copy of p1 and assign it to p3.
-            Person p3 = p1.DeepCopy();
+            // perform a shallow copy of person1 and assign it to person2.
+            Person person2 = person1.ShallowCopy();
+            // make a deep copy of person1 and assign it to person3.
+            Person person3 = person1.DeepCopy();
 
-            // display values of p1, p2 and p3.
-            Console.WriteLine("Original values of p1, p2, p3:");
-            Console.WriteLine("   p1 instance values: ");
-            DisplayValues(p1);
-            Console.WriteLine("   p2 instance values:");
-            DisplayValues(p2);
-            Console.WriteLine("   p3 instance values:");
-            DisplayValues(p3);
+            // display values of person1, person2 and p3.
+            Console.WriteLine("Original values of person1, person2, person3:");
+            Console.WriteLine("   person1 instance values: ");
+            DisplayValues(person1);
+            Console.WriteLine("   person2 instance values:");
+            DisplayValues(person2);
+            Console.WriteLine("   person3 instance values:");
+            DisplayValues(person3);
 
-            // change the value of p1 properties and display the values of p1, p2 and p3.
-            p1.Age = 20;
-            p1.BirthDate = Convert.ToDateTime("2000-01-01");
-            p1.Name = "John";
-            p1.IdInfo.IdNumber = 7878;
-            Console.WriteLine("\nValues of p1, p2 and p3 after changes to p1:");
-            Console.WriteLine("   p1 instance values: ");
-            DisplayValues(p1);
-            Console.WriteLine("   p2 instance values (reference values have changed):");
-            DisplayValues(p2);
-            Console.WriteLine("   p3 instance values (everything was kept the same):");
-            DisplayValues(p3);
+            // change the value of person1 properties and display the values of person1, person2 and person3.
+            person1.Age = 20;
+            person1.BirthDate = Convert.ToDateTime("2000-01-01");
+            person1.Name = "John";
+            person1.IdInfo.IdNumber = 7878;
+            Console.WriteLine("\nValues of person1, person2 and person3 after changes to person1:");
+            Console.WriteLine("   person1 instance values: ");
+            DisplayValues(person1);
+            Console.WriteLine("   person2 instance values (reference values have changed):");
+            DisplayValues(person2);
+            Console.WriteLine("   person3 instance values (everything was kept the same):");
+            DisplayValues(person3);
         }
 
         public static void DisplayValues(Person p)
